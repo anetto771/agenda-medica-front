@@ -11,9 +11,20 @@ const routes: Routes = [
   },
   {
     path: "home",
-    
-    component: HomeComponent
-  }
+    loadChildren: () => {
+      return import ("./components/home/home.module").then(m => m.HomeModule);
+    }
+  },
+
+  { 
+    path: 'login', 
+  loadChildren: () => import('./components/login/login.module').then(m => m.LoginModule) 
+},
+
+  { 
+    path: 
+    'medicos', 
+    loadChildren: () => import('./components/medicos/medicos.module').then(m => m.MedicosModule) }
 ];
 
 @NgModule({
