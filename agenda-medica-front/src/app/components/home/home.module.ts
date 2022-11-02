@@ -5,16 +5,18 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
 
 
 
+
 @NgModule({
   declarations: [
     HomeComponent
   ],
   imports: [
     CommonModule,
-    MaterialModule
-  ],
+    MaterialModule,
+    ],
   exports: [
     HomeComponent
+    
   ]
 })
 export class HomeModule { }

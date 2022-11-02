@@ -1,4 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    box-sizing: border-box;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { 
+    height: 100%; 
+}
+body { 
+    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+mat-drawer-container{
+    width: 100%;
+    height: 100%;
+}
+
+mat-drawer{
+    padding: 20px;
+}
+
+mat-toolbar{
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+mat-toolbar img{
+    width: 50px;
+    height: 50px;
+}
+
+mat-nav-list a mat-icon{
+    margin-right: 10px;
+}
+
+.container{
+    width: clamp(300px, 100%, 1200px);
+    margin:  50px auto 0 auto;
+    padding:  0 30px ;
+}
+
+.full-width{
+    width: 100%;
+}
