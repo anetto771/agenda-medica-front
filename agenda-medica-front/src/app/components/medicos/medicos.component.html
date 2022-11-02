@@ -1,0 +1,111 @@
+<mat-drawer-container autosize>
+    <mat-drawer #drawer mode="over">
+        <mat-nav-list>
+            <a mat-list-item routerLink="/home">
+                <mat-icon color="primary">home</mat-icon>
+                Página principal
+            </a>
+            <a mat-list-item routerLink="/agendamentos">
+                <mat-icon color="primary">calendar_month</mat-icon>
+                Agendamentos
+            </a>
+            <a mat-list-item routerLink="/medicos">
+                <mat-icon color="primary">person</mat-icon>
+                Médicos
+            </a>
+            <a mat-list-item routerLink="/pacientes">
+                <mat-icon color="primary">person</mat-icon>
+                Pacientes
+            </a>
+            <a mat-list-item routerLink="/faq">
+                <mat-icon color="primary">quiz</mat-icon>
+                FAQ
+            </a>
+            <a mat-list-item routerLink="/logout">
+                <mat-icon color="primary">logout</mat-icon>
+                Sair
+            </a>
+
+        </mat-nav-list>
+
+    </mat-drawer>
+
+    <mat-drawer-content>
+        <mat-toolbar color="primary">
+            <button mat-icon-button (click)="drawer.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>
+                <h1>
+                    Agenda Médica
+                </h1>
+            </span>
+            <a href="">
+                <img src="assets/img/City-Hospital-icon.png" alt="Logo">
+            </a>
+        </mat-toolbar>
+
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource">
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> Id </th>
+                    <td mat-cell *matCellDef="let medico"> {{medico.id}} </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="nome">
+                    <th mat-header-cell *matHeaderCellDef> Nome </th>
+                    <td mat-cell *matCellDef="let medico"> {{medico.nome}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef> E-mail </th>
+                    <td mat-cell *matCellDef="let medico"> {{medico.email}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="cpf">
+                    <th mat-header-cell *matHeaderCellDef> CPF </th>
+                    <td mat-cell *matCellDef="let medico"> {{medico.cpf}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="especialidade">
+                    <th mat-header-cell *matHeaderCellDef> Especialidade </th>
+                    <td mat-cell *matCellDef="let medico"> {{medico.especialidade}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="dataCriacao">
+                    <th mat-header-cell *matHeaderCellDef> Data de Criação </th>
+                    <td mat-cell *matCellDef="let medico"> {{medico.dataCriacao}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="update">
+                    <th mat-header-cell *matHeaderCellDef> Alterar </th>
+                    <td mat-cell *matCellDef="let medico">
+                        <button mat-icon-button>
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="delete">
+                    <th mat-header-cell *matHeaderCellDef> Apagar </th>
+                    <td mat-cell *matCellDef="let medico">
+                        <button mat-icon-button>
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+            </mat-paginator>
+        </div>
