@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MedicosRoutingModule } from './medicos-routing.module';
 import { MedicosComponent } from './medicos.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
+import { NavBarModule } from '../nav-bar/nav-bar.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
   imports: [
     CommonModule,
     MedicosRoutingModule,
-    MaterialModule
+    MaterialModule,
+    NavBarModule
   ],
   exports: [
     MedicosComponent
