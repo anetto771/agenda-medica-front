@@ -29,19 +29,14 @@ export class MedicosComponent implements OnInit, AfterViewInit {
       dataCriacao: "02/11/2022"
     }
   ]
-
   displayedColumns: string[] = ['id', 'nome', 'email', 'cpf','especialidade','dataCriacao','update','delete'];
   dataSource = new MatTableDataSource<Medico>(this.ELEMENT_DATA);
-
   @ViewChild(MatPaginator) 
   paginator!: MatPaginator;
-
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-
   constructor() { }
-
   ngOnInit(): void {
   }
 }
