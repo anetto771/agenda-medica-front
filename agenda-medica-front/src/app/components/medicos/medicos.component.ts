@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Medico } from 'src/app/models/medico';
+import { MedicoService } from 'src/app/services/medico.service';
 
 @Component({
   selector: 'app-medicos',
@@ -10,33 +11,64 @@ import { Medico } from 'src/app/models/medico';
 })
 export class MedicosComponent implements OnInit, AfterViewInit {
 
-  ELEMENT_DATA: Medico[] = [
-    {
-      id: 1,
-      nome:"Aecio Netto",
-      cpf:"15105299779",
-      email: "aecio@gmail.com",
-      perfis:["ADMIN","PACIENTE"],
-      dataCriacao: "02/11/2022"
-    },
-    {
-      id: 2,
-      nome:"Eychila Eleuterio",
-      cpf:"16766656760",
-      email: "eychila@gmail.com",
-      especialidade: "Clinico Geral",
-      perfis:["MEDICO","PACIENTE"],
-      dataCriacao: "02/11/2022"
-    }
-  ]
-  displayedColumns: string[] = ['id', 'nome', 'email', 'cpf','especialidade','dataCriacao','update','delete'];
-  dataSource = new MatTableDataSource<Medico>(this.ELEMENT_DATA);
-  @ViewChild(MatPaginator) 
+  medicoList: Medico[] = [];
+
+  displayedColumns: string[] = ['id', 'nome', 'email', 'cpf', 'especialidade', 'dataCriacao', 'update', 'delete'];
+  dataSource = new MatTableDataSource<Medico>(this.medicoList);
+
+  @ViewChild(MatPaginator)
   paginator!: MatPaginator;
+  
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-  constructor() { }
-  ngOnInit(): void {
+
+  private service: MedicoService;
+
+  constructor(service: MedicoService) { 
+    this.service = service;
   }
+
+  ngOnInit(): void {
+    this.initializeTable();
+  }
+
+  filterName = (medico: Medico, value: string) => {
+    let flag: boolean = medico.nome.toLocaleLowerCase().indexOf(value) != -1;
+    if (flag) {
+      return true;
+    }
+    else {
+      return false
+    }
+  };
+  filterCpf = (medico: Medico, value: string) => {
+    let flag: boolean = medico.cpf.toLocaleLowerCase().indexOf(value) != -1;
+    if (flag) {
+      return true;
+    }
+    else {
+      return false
+    }
+  };
+
+  applyFilterName(event: Event) {
+    this.dataSource.filterPredicate = this.filterName;
+    const filterValue = (<HTMLInputElement>event.target).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  applyFilterCpf(event: Event) {
+    this.dataSource.filterPredicate = this.filterCpf;
+    const filterValue = (<HTMLInputElement>event.target).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  initializeTable(): void { 
+    this.service.findAll().subscribe(medicos => {
+      this.medicoList = medicos;
+      this.dataSource = new MatTableDataSource<Medico>(this.medicoList);
+      this.dataSource.paginator = this.paginator;
+        })
+  }
+
 }
+

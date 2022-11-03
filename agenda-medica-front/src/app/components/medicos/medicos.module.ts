@@ -5,11 +5,14 @@ import { MedicosRoutingModule } from './medicos-routing.module';
 import { MedicosComponent } from './medicos.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { NavBarModule } from '../nav-bar/nav-bar.module';
+import { MedicoCreateComponent } from './childrens/medico-create/medico-create.component';
 
 
 @NgModule({
   declarations: [
-    MedicosComponent
+    MedicosComponent,
+    MedicoCreateComponent
+    
   ],
   imports: [
     CommonModule,
@@ -18,7 +21,9 @@ import { NavBarModule } from '../nav-bar/nav-bar.module';
     NavBarModule
   ],
   exports: [
-    MedicosComponent
+    MedicosComponent,
+    MedicoCreateComponent
+    
   ]
 })
 export class MedicosModule { }

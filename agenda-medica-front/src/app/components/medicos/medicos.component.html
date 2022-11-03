@@ -1,6 +1,24 @@
 <nav-bar>
     <ng-container>
+        <div class="container-title">
+            <h2>Lista de Médicos</h2>
+            <a mat-fab color="primary" class="mat-elevation-z8" routerLink="new">
+                <mat-icon>add</mat-icon>
+            </a>
+        </div>
+
+        <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Nome</mat-label>
+            <input matInput (keyup)="applyFilterName($event)" #input>
+        </mat-form-field>
+
+        <mat-form-field appearance="standard" class="full-width">
+            <mat-label>CPF</mat-label>
+            <input matInput (keyup)="applyFilterCpf($event)" #input>
+        </mat-form-field>
         <div class="mat-elevation-z8">
+
+            
             <table mat-table [dataSource]="dataSource">
 
                 <!-- Position Column -->
