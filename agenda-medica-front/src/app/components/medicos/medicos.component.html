@@ -17,7 +17,6 @@
             <input matInput (keyup)="applyFilterCpf($event)" #input>
         </mat-form-field>
         <div class="mat-elevation-z8">
-
             
             <table mat-table [dataSource]="dataSource">
 
@@ -50,6 +49,11 @@
                     <td mat-cell *matCellDef="let medico"> {{medico.especialidade}} </td>
                 </ng-container>
 
+                <ng-container matColumnDef="telefone">
+                    <th mat-header-cell *matHeaderCellDef> Telefone </th>
+                    <td mat-cell *matCellDef="let medico"> {{medico.telefone}}</td>
+                </ng-container>
+
                 <ng-container matColumnDef="dataCriacao">
                     <th mat-header-cell *matHeaderCellDef> Data de Criação </th>
                     <td mat-cell *matCellDef="let medico"> {{medico.dataCriacao}} </td>
@@ -58,16 +62,16 @@
                 <ng-container matColumnDef="update">
                     <th mat-header-cell *matHeaderCellDef> Alterar </th>
                     <td mat-cell *matCellDef="let medico">
-                        <button mat-icon-button>
+                        <a mat-icon-button [routerLink]="['edit', medico.id]">
                             <mat-icon>edit</mat-icon>
-                        </button>
+                        </a>
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="delete">
                     <th mat-header-cell *matHeaderCellDef> Apagar </th>
                     <td mat-cell *matCellDef="let medico">
-                        <button mat-icon-button>
+                        <button mat-icon-button (click)="delete(medico.id)">
                             <mat-icon>delete</mat-icon>
                         </button>
                     </td>

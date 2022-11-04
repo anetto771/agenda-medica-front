@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Medico } from 'src/app/models/medico';
+import { MedicoService } from 'src/app/services/medico.service';
 
 @Component({
   selector: 'app-medico-create',
@@ -7,9 +12,53 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MedicoCreateComponent implements OnInit {
 
-  constructor() { }
+  public medico: Medico = {
+  nome: "",
+  cpf: "",
+  email: "",
+  telefone: "",
+  especialidade:"",
+  perfis: [],
+  }
+
+  private perfis: number[] = [];
+  private toast: ToastrService;
+  private service: MedicoService;
+  private router: Router;
+
+  constructor(service: MedicoService,toast: ToastrService, router: Router) { 
+    this.service = service;
+    this.toast = toast;
+    this.router = router;
+    
+  }
 
   ngOnInit(): void {
   }
 
+  addPerfil(perfil: number): void {
+    for(let i = 0; i < this.perfis.length; i++) {
+      if(this.perfis[i] === perfil) {
+        this.perfis.splice(i, 1);
+        this.medico.perfis = this.perfis;
+        return;
+      }
+    }
+    this.perfis.push(perfil);
+    this.medico.perfis = this.perfis;
+  }
+
+  create(form: NgForm){
+    if(form.valid) {
+      this.service.insert(this.medico).subscribe({
+        next: response => {
+          this.toast.success("Médico cadastrado com sucesso", "Sucesso");
+          this.router.navigate(["/medicos"]);
+        }
+      })
+    }
+    else {
+      this.toast.error("Dados inválidos","Erro");
+    }
+  }
 }
