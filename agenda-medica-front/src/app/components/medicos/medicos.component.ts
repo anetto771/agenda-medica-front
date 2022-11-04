@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 import { Medico } from 'src/app/models/medico';
 import { MedicoService } from 'src/app/services/medico.service';
 
@@ -13,7 +15,7 @@ export class MedicosComponent implements OnInit, AfterViewInit {
 
   medicoList: Medico[] = [];
 
-  displayedColumns: string[] = ['id', 'nome', 'email', 'cpf', 'especialidade', 'dataCriacao', 'update', 'delete'];
+  displayedColumns: string[] = ['id', 'nome', 'email', 'cpf','telefone','especialidade', 'dataCriacao', 'update', 'delete'];
   dataSource = new MatTableDataSource<Medico>(this.medicoList);
 
   @ViewChild(MatPaginator)
@@ -24,9 +26,11 @@ export class MedicosComponent implements OnInit, AfterViewInit {
   }
 
   private service: MedicoService;
+  private toast: ToastrService;
 
-  constructor(service: MedicoService) { 
+  constructor(service: MedicoService, toast: ToastrService) { 
     this.service = service;
+    this.toast = toast;
   }
 
   ngOnInit(): void {
@@ -68,6 +72,14 @@ export class MedicosComponent implements OnInit, AfterViewInit {
       this.dataSource = new MatTableDataSource<Medico>(this.medicoList);
       this.dataSource.paginator = this.paginator;
         })
+  }
+  delete(id: number): void {
+    this.service.remove(id).subscribe({
+      next: response => {
+        this.toast.success("Médico deletado com sucesso!", "Sucesso");
+        this.initializeTable();
+      }
+    })
   }
 
 }

@@ -7,6 +7,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -19,7 +20,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatListModule,
     MatInputModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCheckboxModule,
   ]
 })
 export class MaterialModule { }

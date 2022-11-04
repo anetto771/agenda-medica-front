@@ -15,16 +15,16 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
 
   public formLogin: FormGroup;
-  private toastr: ToastrService;
+  private toast: ToastrService;
   private auth: AuthService;
   private router: Router;
 
-  constructor(formBuilder: FormBuilder, toastr: ToastrService, auth: AuthService, router: Router) { 
+  constructor(formBuilder: FormBuilder, toast: ToastrService, auth: AuthService, router: Router) { 
     this.formLogin = formBuilder.group({
       email: ["", [Validators.required,Validators.email]],
       senha: ["", [Validators.required,Validators.minLength(4)]]
     });
-    this.toastr = toastr;
+    this.toast = toast;
     this.auth = auth;
     this.router = router;
   }
@@ -42,15 +42,15 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/home']);
             }
           else {
-            this.toastr.error("Acesso negado!", "Login");
+            this.toast.error("Acesso negado!", "Login");
           }
         },
         error: error => {
-          this.toastr.error("E-mail e/ou senha incorreto.", "Login");
+          this.toast.error("E-mail e/ou senha incorreto.", "Login");
         }
       });
     }else {
-      this.toastr.error("E-mail e/ou senha inválido,", "Login");
+      this.toast.error("E-mail e/ou senha inválido,", "Login");
     }
   }
 }

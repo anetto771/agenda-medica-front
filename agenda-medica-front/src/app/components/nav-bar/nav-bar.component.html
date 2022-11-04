@@ -5,28 +5,34 @@
                 <mat-icon color="primary">home</mat-icon>
                 Página principal
             </a>
+            
             <a mat-list-item routerLink="/agendamentos">
                 <mat-icon color="primary">calendar_month</mat-icon>
                 Agendamentos
             </a>
+
             <a mat-list-item routerLink="/medicos">
                 <mat-icon color="primary">person</mat-icon>
                 Médicos
             </a>
+
             <a mat-list-item routerLink="/pacientes">
                 <mat-icon color="primary">person</mat-icon>
                 Pacientes
             </a>
+
             <a mat-list-item routerLink="/faq">
                 <mat-icon color="primary">quiz</mat-icon>
                 FAQ
             </a>
+
             <a mat-list-item routerLink="/exit">
                 <mat-icon color="primary">logout</mat-icon>
                 Sair
             </a>
         </mat-nav-list>
     </mat-drawer>
+    
     <mat-drawer-content>
         <mat-toolbar color="primary">
             <button mat-icon-button (click)="drawer.toggle()">

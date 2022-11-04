@@ -1,7 +1,7 @@
 <nav-bar>
     <ng-container>
-        <h2>Cadatrar Médico</h2>
-        <form #form="ngForm" (ngSubmit)="create(form)">
+        <h2>Editar Médico</h2>
+        <form #form="ngForm" (ngSubmit)="update(form)">
             <mat-form-field class="full-width" appearance="fill">
                 <mat-label>Nome</mat-label>
                 <input type="text" name="nome" matInput placeholder="Ex: Aecio Netto" required maxlength="50" [(ngModel)]="medico.nome">
@@ -24,13 +24,13 @@
             </mat-form-field>
 
             <section class="section">
-                <mat-checkbox color="primary" class="margin" (change)="addPerfil(0)">Administrador</mat-checkbox>
-                <mat-checkbox color="primary" class="margin" (change)="addPerfil(1)">Paciente</mat-checkbox>
-                <mat-checkbox color="primary" class="margin" (change)="addPerfil(2)">Medico</mat-checkbox>            
+                <mat-checkbox color="primary" class="margin" (change)="addPerfil(0)" [checked]="perfisChecked[0]">Administrador</mat-checkbox>
+                <mat-checkbox color="primary" class="margin" (change)="addPerfil(1)" [checked]="perfisChecked[1]">Paciente</mat-checkbox>
+                <mat-checkbox color="primary" class="margin" (change)="addPerfil(2)" [checked]="perfisChecked[2]">Medico</mat-checkbox>            
             </section>
             <div class="align-right">
-                <button type="submit" mat-raised-button color="primary">Cadastrar</button>
-                <button type="button" mat-raised-button color="warn">Cancelar</button>
+                <button type="submit" mat-raised-button color="primary">Editar</button>
+                <a type="button" mat-raised-button color="warn">Cancelar</a>
             </div>
         </form>
     </ng-container>
