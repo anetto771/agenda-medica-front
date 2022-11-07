@@ -23,6 +23,10 @@ const routes: Routes = [
       
     },
 
+    { path: 'agendamentos',
+    loadChildren: () => import('./components/agendamentos/agendamentos.module').then(m => m.AgendamentosModule), 
+    canActivate: [AuthGuard] },
+
   { 
     path: 'medicos', 
     loadChildren: () => import("./components/medicos/medicos.module").then(m => m.MedicosModule),
@@ -43,7 +47,12 @@ const routes: Routes = [
   path: "exit",
   component: ExitComponent,
   canActivate: [AuthGuard]
-}];
+},
+];
+
+
+
+
 
 
 @NgModule({

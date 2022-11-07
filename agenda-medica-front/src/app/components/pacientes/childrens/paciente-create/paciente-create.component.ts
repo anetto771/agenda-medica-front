@@ -53,7 +53,7 @@ export class PacienteCreateComponent implements OnInit {
     if(form.valid) {
       this.service.insert(this.paciente).subscribe({
         next: response => {
-          this.toast.success("Médico cadastrado com sucesso", "Sucesso");
+          this.toast.success("Paciente cadastrado com sucesso", "Sucesso");
           this.router.navigate(["/pacientes"]);
         },
         error: errorResponse => {

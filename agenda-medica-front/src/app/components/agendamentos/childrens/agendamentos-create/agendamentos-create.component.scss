@@ -1,0 +1,14 @@
+.status{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.observacoes{
+    min-height: 30px;
+    max-height: 80px;
+}
+
+form a, form button {
+    margin-left: 20px;
+    float: right;
+}

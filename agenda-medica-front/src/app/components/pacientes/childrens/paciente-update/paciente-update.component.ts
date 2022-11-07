@@ -82,7 +82,7 @@ export class PacienteUpdateComponent implements OnInit {
     if(form.valid) {
       this.service.update(this.paciente).subscribe({
         next: response => {
-          this.toast.success("Médico editado com sucesso", "Sucesso");
+          this.toast.success("Paciente editado com sucesso", "Sucesso");
           this.router.navigate(["/pacientes"]);
         },
         error: errorResponse => {
