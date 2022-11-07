@@ -8,5 +8,5 @@ export interface Agendamento {
     medico: number;
     paciente: number;
     nomeMedico: string;
-    nomeCliente: string;
+    nomePaciente: string;
 }

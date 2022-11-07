@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Agendamento } from 'src/app/models/agendamento';
 import { Medico } from 'src/app/models/medico';
@@ -15,49 +15,55 @@ type DataSection = {
 }
 
 @Component({
-  selector: 'app-agendamentos-create',
-  templateUrl: './agendamentos-create.component.html',
-  styleUrls: ['./agendamentos-create.component.scss']
+  selector: 'app-agendamentos-update',
+  templateUrl: './agendamentos-update.component.html',
+  styleUrls: ['./agendamentos-update.component.scss']
 })
-export class AgendamentosCreateComponent implements OnInit {
+export class AgendamentosUpdateComponent implements OnInit {
 
   public statusList: DataSection[] = [
     { title: "Aberto", value: 0 },
     { title: "Em andamento", value: 1, },
     { title: "Encerrado", value: 2 }
-  ]
+  ];
+
+  public agendamento: Agendamento = {
+    status: NaN,
+    titulo: '',
+    observacoes: '',
+    medico: NaN,
+    paciente: NaN,
+    nomeMedico: '',
+    nomePaciente: ''
+  }
 
   public pacienteList: Paciente[] = [];
   public medicoList: Medico[] = [];
 
-  public formAgendamento: FormGroup;
+
 
   private servicePaciente: PacienteService;
   private serviceMedico: MedicoService;
   private toast: ToastrService;
   private service: AgendamentoService;
   private router: Router;
+  private route: ActivatedRoute;
 
-  constructor(service: AgendamentoService, servicePaciente: PacienteService, 
-    serviceMedico: MedicoService, formBuilder: FormBuilder, toast: ToastrService, router: Router) {
-    
+  constructor(service: AgendamentoService, servicePaciente: PacienteService,
+    serviceMedico: MedicoService, toast: ToastrService, router: Router, route: ActivatedRoute) {
+
     this.service = service;
     this.servicePaciente = servicePaciente;
     this.serviceMedico = serviceMedico;
     this.toast = toast;
     this.router = router;
-    this.formAgendamento = formBuilder.group({
-      titulo: ["", [Validators.required]],
-      status: ["", [Validators.required]],
-      paciente: ["", [Validators.required]],
-      medico: ["", [Validators.required]],
-      observacoes: ["", [Validators.required, Validators.minLength(6)]]
-    });
+    this.route = route;
   }
 
   ngOnInit(): void {
     this.initializeCliente();
     this.initializeMedico();
+    this.initializeFields();
   }
   initializeCliente(): void {
     this.servicePaciente.findAll().subscribe(paciente => {
@@ -69,17 +75,26 @@ export class AgendamentosCreateComponent implements OnInit {
       this.medicoList = medico;
     });
   }
-  created(): void {
-    if (this.formAgendamento.valid) {
-      let agendamento: Agendamento = this.formAgendamento.value;
-      this.service.insert(agendamento).subscribe({
+
+  initializeFields(): void {
+    let id: string | null = (this.route.snapshot.paramMap.get("id"));
+    if(id != null) {
+      this.service.findById(Number.parseInt(id)).subscribe(agendamento => {
+        this.agendamento = agendamento;
+      });
+    }
+  }
+
+  update(form: NgForm): void {
+    if (form.valid) {
+      this.service.update(this.agendamento).subscribe({
         next: () => {
-          this.toast.success("Agendamento adicionado com sucesso.", "Sucesso");
+          this.toast.success("Agendamento editado com sucesso.", "Sucesso");
           this.router.navigate(["/agendamentos"]);
         },
         error: errorResponse => {
           let errors = errorResponse.error.errors;
-          if(errors != undefined) {
+          if (errors != undefined) {
             errors.forEach((error: any) => {
               this.toast.error(error.message, "Erro");
             });

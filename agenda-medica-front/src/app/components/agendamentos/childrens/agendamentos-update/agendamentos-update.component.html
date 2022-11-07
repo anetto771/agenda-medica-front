@@ -2,15 +2,15 @@
     <ng-container>
         <h2>Adicionar Agendamentos</h2>
 
-        <form [formGroup]="formAgendamento" (ngSubmit)="created()">
+        <form #form="ngForm" (ngSubmit)="update(form)">
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Título</mat-label>
-                <input type="text" matInput formControlName="titulo">
+                <input type="text" matInput name="titulo" [(ngModel)]="agendamento.titulo">
             </mat-form-field>
             <div class="status">
                 <mat-form-field appearance="fill">
                     <mat-label>Status</mat-label>
-                    <mat-select formControlName="status">
+                    <mat-select name="status" [(ngModel)]="agendamento.status">
                         <mat-option *ngFor="let status of statusList" [value]="status.value">{{ status.title }}
                         </mat-option>
                     </mat-select>
@@ -19,7 +19,7 @@
 
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Paciente</mat-label>
-                <mat-select formControlName="paciente">
+                <mat-select name="paciente" [(ngModel)]="agendamento.paciente">
                     <mat-option *ngFor="let paciente of pacienteList" [value]="paciente.id">{{ paciente.nome }}
                     </mat-option>
                 </mat-select>
@@ -27,7 +27,7 @@
 
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Médico</mat-label>
-                <mat-select formControlName="medico">
+                <mat-select name="medico" [(ngModel)]="agendamento.medico">
                     <mat-option *ngFor="let medico of medicoList" [value]="medico.id">{{ medico.nome }}
                     </mat-option>
                 </mat-select>
@@ -35,10 +35,10 @@
 
             <mat-form-field class="full-width" appearance="fill">
                 <mat-label>Observações</mat-label>
-                <textarea matInput class="observacoes" formControlName="observacoes"></textarea>
+                <textarea matInput class="observacoes" name="observacoes" [(ngModel)]="agendamento.observacoes"></textarea>
             </mat-form-field>
             
-            <button mat-raised-button color="primary">Adicionar</button>
+            <button mat-raised-button color="primary">Editar</button>
             <a mat-raised-button color="warn" routerLink="/agendamentos">Cancelar</a>
             
         </form>
