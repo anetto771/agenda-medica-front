@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Detalhes</h2>
+<mat-dialog-content>
+    <dl class="list-details">
+        <dt>Id</dt>
+        <dd>{{agendamento.id}}</dd>
+        <dt>Paciente</dt>
+        <dd>{{agendamento.nomePaciente}}</dd>
+        <dt>Médico</dt>
+        <dd>{{agendamento.nomeMedico}}</dd>
+        <dt>Status</dt>
+        <dd>{{agendamento.status | status}}</dd>
+        <dt>Data de Abertura</dt>
+        <dd>{{agendamento.dataAbertura}}</dd>
+        <dt>Data de Fechamento</dt>
+        <dd>{{agendamento.dataFechamento | encerramento}}</dd>
+        <dt>Observações</dt>
+        <dd>{{agendamento.observacoes}}</dd>
+        
+    </dl>
+</mat-dialog-content>
+<mat-dialog-actions >
+    <button mat-raised-button mat-dialog-close color="warn">Fechar</button>
+    
+</mat-dialog-actions>
+
+
+
+
+
+

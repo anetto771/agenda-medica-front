@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatRadioButton } from '@angular/material/radio';
 import { MatTableDataSource } from '@angular/material/table';
 import { Agendamento } from 'src/app/models/agendamento';
 import { AgendamentoService } from 'src/app/services/agendamento.service';
+import { AgendamentoDetailsComponent } from './childrens/agendamento-details/agendamento-details.component';
 
 
 @Component({
@@ -18,8 +20,8 @@ export class AgendamentosComponent implements OnInit {
 
   public agendamentoList: Agendamento[] = [];
 
-  displayedColumns: string[] = ['id', 'dataAbertura', 'status', 'titulo',
-    'observacoes', 'medico', 'paciente', 'nomeMedico', 'nomePaciente', 'update', 'details'];
+  displayedColumns: string[] = ['id', 'titulo', 'nomePaciente', 'nomeMedico','dataAbertura', 'status', 
+    'observacoes', 'update', 'details'];
     
   dataSource = new MatTableDataSource<Agendamento>(this.agendamentoList);
 
@@ -27,9 +29,11 @@ export class AgendamentosComponent implements OnInit {
 paginator!: MatPaginator;
 
 private service: AgendamentoService;
+private dialog: MatDialog;
 
-constructor(service: AgendamentoService) {
+constructor(service: AgendamentoService, dialog: MatDialog) {
 this.service = service;
+this.dialog = dialog;
 }
 ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -63,6 +67,10 @@ ngOnInit(): void {
     check2.checked = false;
     this.dataSource = new MatTableDataSource<Agendamento>(this.agendamentoList);
     this.dataSource.paginator = this.paginator;
+  }
+  openDetailsDialog(agendamento: Agendamento): void {
+    this.dialog.open(AgendamentoDetailsComponent, { data: agendamento, width: "400px" 
+  });
   }
 }
 

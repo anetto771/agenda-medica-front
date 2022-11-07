@@ -8,12 +8,16 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PipesModule } from 'src/app/pipes/pipes.module';
 import { AgendamentosCreateComponent } from './childrens/agendamentos-create/agendamentos-create.component';
+import { AgendamentosUpdateComponent } from './childrens/agendamentos-update/agendamentos-update.component';
+import { AgendamentoDetailsComponent } from './childrens/agendamento-details/agendamento-details.component';
 
 
 @NgModule({
   declarations: [
     AgendamentosComponent,
-    AgendamentosCreateComponent
+    AgendamentosCreateComponent,
+    AgendamentosUpdateComponent,
+    AgendamentoDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +30,8 @@ import { AgendamentosCreateComponent } from './childrens/agendamentos-create/age
   ],
   exports: [
     AgendamentosComponent,
-    AgendamentosCreateComponent
+    AgendamentosCreateComponent,
+    AgendamentosUpdateComponent
   ]
 })
 export class AgendamentosModule { }
