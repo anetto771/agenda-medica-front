@@ -28,12 +28,23 @@ const routes: Routes = [
     loadChildren: () => import("./components/medicos/medicos.module").then(m => m.MedicosModule),
     canActivate:[AuthGuard]
   },
+
+  { 
+    path: 'pacientes', 
+    loadChildren: () => import("./components/pacientes/pacientes.module").then(m => m.PacientesModule),
+    canActivate:[AuthGuard]
+  },
+  { 
+    path: 'usuarios', 
+    loadChildren: () => import("./components/usuarios/usuarios.module").then(m => m.UsuariosModule),
+    canActivate:[AuthGuard]
+  },
 {
   path: "exit",
   component: ExitComponent,
   canActivate: [AuthGuard]
-}
-];
+}];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

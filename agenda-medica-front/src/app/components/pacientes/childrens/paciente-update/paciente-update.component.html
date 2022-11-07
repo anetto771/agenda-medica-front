@@ -1,0 +1,46 @@
+<nav-bar>
+    <ng-container>
+        <h2>Editar Paciente</h2>
+        <form #form="ngForm" (ngSubmit)="update(form)">
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Nome</mat-label>
+                <input type="text" name="nome" matInput placeholder="Ex: Aecio Netto" required maxlength="50" [(ngModel)]="paciente.nome">
+            </mat-form-field>
+            
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Cpf</mat-label>
+                <input type="text" name="cpf" matInput placeholder="Ex: 000.000.000-00" mask="000.000.000-00" required [(ngModel)]="paciente.rg">
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Rg</mat-label>
+            <input type="text" name="rg" matInput placeholder="Ex: 00.000.000-0" mask="00.000.000-0" required
+                [(ngModel)]="paciente.rg">
+        </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Endereço</mat-label>
+                <input type="text" name="endereco" matInput placeholder="Ex: R: Jõao Felix" required maxlength="60"
+                    [(ngModel)]="paciente.endereco">
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Telefone</mat-label>
+                <input type="tel" name="telefone" matInput placeholder="Ex: 99999-9999" required maxlength="11"  [(ngModel)]="paciente.telefone">
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>E-mail</mat-label>
+                <input type="email" name="email" matInput placeholder="Ex: nome@mail.com" required email maxlength="50" [(ngModel)]="paciente.email">
+            </mat-form-field>
+
+            <section class="section">
+                <mat-checkbox color="primary" class="margin" (change)="addPerfil(0)" [checked]="perfisChecked[0]">Administrador</mat-checkbox>
+                <mat-checkbox color="primary" class="margin" (change)="addPerfil(1)" [checked]="perfisChecked[1]">Paciente</mat-checkbox>
+                <mat-checkbox color="primary" class="margin" (change)="addPerfil(2)" [checked]="perfisChecked[2]">Medico</mat-checkbox>            
+            </section>
+            <div class="align-right">
+                <button type="submit" mat-raised-button color="primary">Editar</button>
+                <a type="button" mat-raised-button color="warn" routerLink="/pacientes">Cancelar</a>
+            </div>
+        </form>
+    </ng-container>
+</nav-bar>

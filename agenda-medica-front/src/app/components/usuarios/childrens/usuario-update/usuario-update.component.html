@@ -1,0 +1,31 @@
+<nav-bar>
+    <ng-container>
+        <h2>Editar Usuario</h2>
+        <form #form="ngForm" (ngSubmit)="update(form)">
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Nome</mat-label>
+                <input type="text" name="nome" matInput placeholder="Ex: Aecio Netto" required maxlength="50" [(ngModel)]="usuario.nome">
+            </mat-form-field>
+                        
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>E-mail</mat-label>
+                <input type="email" name="email" matInput placeholder="Ex: nome@mail.com" required email maxlength="50" [(ngModel)]="usuario.email">
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Senha</mat-label>
+                <input type="password" name="senha" matInput  required email maxlength="50" [(ngModel)]="usuario.senha">
+            </mat-form-field>
+
+            <section class="section">
+                <mat-checkbox color="primary" class="margin" (change)="addPerfil(0)" [checked]="perfisChecked[0]">Administrador</mat-checkbox>
+                <mat-checkbox color="primary" class="margin" (change)="addPerfil(1)" [checked]="perfisChecked[1]">Usuario</mat-checkbox>
+                <mat-checkbox color="primary" class="margin" (change)="addPerfil(2)" [checked]="perfisChecked[2]">Medico</mat-checkbox>            
+            </section>
+            <div class="align-right">
+                <button type="submit" mat-raised-button color="primary">Editar</button>
+                <a type="button" mat-raised-button color="warn" routerLink="/usuarios">Cancelar</a>
+            </div>
+        </form>
+    </ng-container>
+</nav-bar>
