@@ -1,41 +1,40 @@
 <nav-bar>
     <ng-container>
-        <h2>Cadastrar Médico</h2>
+        <h2>Cadastrar Usuario</h2>
         <form #form="ngForm" (ngSubmit)="create(form)">
             <mat-form-field class="full-width" appearance="fill">
                 <mat-label>Nome</mat-label>
                 <input type="text" name="nome" matInput placeholder="Ex: Aecio Netto" required maxlength="50"
-                    [(ngModel)]="medico.nome">
+                    [(ngModel)]="usuario.nome">
             </mat-form-field>
+
             <mat-form-field class="full-width" appearance="fill">
-                <mat-label>Cpf</mat-label>
+                    <mat-label>Cpf</mat-label>
                 <input type="text" name="cpf" matInput placeholder="Ex: 000.000.000-00" mask="000.000.000-00" required
-                    [(ngModel)]="medico.cpf">
+                    [(ngModel)]="usuario.cpf">
             </mat-form-field>
-            <mat-form-field class="full-width" appearance="fill">
-                <mat-label>Especialidade</mat-label>
-                <input type="text" name="especialidade" matInput placeholder="Ex: Pediatra" required maxlength="30"
-                    [(ngModel)]="medico.especialidade">
-            </mat-form-field>
-            <mat-form-field class="full-width" appearance="fill">
-                <mat-label>Telefone</mat-label>
-                <input type="tel" name="telefone" matInput placeholder="Ex: 99999-9999" required maxlength="11"
-                    [(ngModel)]="medico.telefone">
-            </mat-form-field>
+
+
             <mat-form-field class="full-width" appearance="fill">
                 <mat-label>E-mail</mat-label>
                 <input type="email" name="email" matInput placeholder="Ex: nome@mail.com" required email maxlength="50"
-                    [(ngModel)]="medico.email">
+                    [(ngModel)]="usuario.email">
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Senha</mat-label>
+                <input type="password" name="senha" matInput  required email maxlength="50"
+                    [(ngModel)]="usuario.senha">
             </mat-form-field>
 
             <section class="section">
                 <mat-checkbox color="primary" class="margin" (change)="addPerfil(0)">Administrador</mat-checkbox>
-                <mat-checkbox color="primary" class="margin" (change)="addPerfil(1)">Paciente</mat-checkbox>
+                <mat-checkbox color="primary" class="margin" (change)="addPerfil(1)">Usuario</mat-checkbox>
                 <mat-checkbox color="primary" class="margin" (change)="addPerfil(2)">Medico</mat-checkbox>
             </section>
             <div class="align-right">
                 <button type="submit" mat-raised-button color="primary">Cadastrar</button>
-                <a type="button" mat-raised-button color="warn" routerLink="/medicos">Cancelar</a>
+                <a type="button" mat-raised-button color="warn" routerLink="/usuarios">Cancelar</a>
             </div>
         </form>
     </ng-container>
