@@ -81,7 +81,7 @@ export class UsuarioUpdateComponent implements OnInit {
     if(form.valid) {
       this.service.update(this.usuario).subscribe({
         next: response => {
-          this.toast.success("Médico editado com sucesso", "Sucesso");
+          this.toast.success("Usuário editado com sucesso", "Sucesso");
           this.router.navigate(["/usuarios"]);
         },
         error: errorResponse => {

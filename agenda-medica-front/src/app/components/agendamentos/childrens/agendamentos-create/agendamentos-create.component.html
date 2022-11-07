@@ -1,0 +1,50 @@
+<nav-bar>
+    <ng-container>
+        <h2>Adicionar Agendamentos</h2>
+
+        <form [formGroup]="formAgendamento" (ngSubmit)="created()">
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Título</mat-label>
+                <input type="text" matInput formControlName="Titulo">
+            </mat-form-field>
+
+            <div class="status">
+                <mat-form-field appearance="fill">
+                    <mat-label>Status</mat-label>
+                    <mat-select formControlName="status">
+                        <mat-option *ngFor="let status of statusList" [value]="status.value">{{ status.title }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Paciente</mat-label>
+                <mat-select formControlName="paciente">
+                    <mat-option *ngFor="let paciente of pacienteList" [value]="paciente.id">{{ paciente.nome }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Médico</mat-label>
+                <mat-select formControlName="medico">
+                    <mat-option *ngFor="let medico of medicoList" [value]="medico.id">{{ medico.nome }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Observações</mat-label>
+                <textarea matInput class="observacoes" formControlName="observacoes"></textarea>
+            </mat-form-field>
+            
+            <button mat-raised-button color="primary">Adicionar</button>
+            <a mat-raised-button color="warn" routerLink="/agendamentos">Cancelar</a>
+            
+        </form>
+
+        <h1>{{ formAgendamento.value | json}}</h1>
+    </ng-container>
+</nav-bar>

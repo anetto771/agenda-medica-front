@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { AgendamentosModule } from 'src/app/components/agendamentos/agendamentos.module';
 import { HomeModule } from 'src/app/components/home/home.module';
 import { LoginModule } from 'src/app/components/login/login.module';
 import { MedicosModule } from 'src/app/components/medicos/medicos.module';
@@ -16,7 +17,8 @@ import { UsuariosModule } from 'src/app/components/usuarios/usuarios.module';
     LoginModule,
     MedicosModule,
     PacientesModule,
-    UsuariosModule
+    UsuariosModule,
+    AgendamentosModule
   ]
 })
 export class PagesModule { }
