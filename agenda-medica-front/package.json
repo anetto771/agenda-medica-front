@@ -23,6 +23,7 @@
     "@auth0/angular-jwt": "^5.1.0",
     "ngx-mask": "^14.2.4",
     "ngx-toastr": "^15.2.1",
+    "nodemailer": "^6.8.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

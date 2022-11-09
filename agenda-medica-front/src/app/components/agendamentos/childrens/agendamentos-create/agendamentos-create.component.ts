@@ -75,6 +75,7 @@ export class AgendamentosCreateComponent implements OnInit {
       this.service.insert(agendamento).subscribe({
         next: () => {
           this.toast.success("Agendamento adicionado com sucesso.", "Sucesso");
+          
           this.router.navigate(["/agendamentos"]);
         },
         error: errorResponse => {

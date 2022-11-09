@@ -10,13 +10,15 @@ import { FormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { MatTableModule } from '@angular/material/table';
 import { MedicoUpdateComponent } from './childrens/medico-update/medico-update.component';
+import { MedicoDetailsComponent } from './medico-details/medico-details.component';
 
 
 @NgModule({
   declarations: [
     MedicosComponent,
     MedicoCreateComponent,
-    MedicoUpdateComponent
+    MedicoUpdateComponent,
+    MedicoDetailsComponent
     
   ],
   imports: [
@@ -31,7 +33,8 @@ import { MedicoUpdateComponent } from './childrens/medico-update/medico-update.c
   exports: [
     MedicosComponent,
     MedicoCreateComponent,
-    MedicoUpdateComponent
+    MedicoUpdateComponent,
+    MedicoDetailsComponent
     
   ]
 })

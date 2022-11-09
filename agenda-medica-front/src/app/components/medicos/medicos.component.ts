@@ -1,10 +1,13 @@
+import { Dialog } from '@angular/cdk/dialog';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 
 import { Medico } from 'src/app/models/medico';
 import { MedicoService } from 'src/app/services/medico.service';
+import { MedicoDetailsComponent } from './medico-details/medico-details.component';
 
 @Component({
   selector: 'app-medicos',
@@ -15,11 +18,12 @@ export class MedicosComponent implements OnInit, AfterViewInit {
 
   medicoList: Medico[] = [];
 
-  displayedColumns: string[] = ['id', 'nome', 'email', 'cpf','telefone','especialidade', 'dataCriacao', 'update', 'delete'];
+  displayedColumns: string[] = [ 'nome', 'update', 'delete'];
   dataSource = new MatTableDataSource<Medico>(this.medicoList);
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
+  medico: any;
   
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -27,10 +31,12 @@ export class MedicosComponent implements OnInit, AfterViewInit {
 
   private service: MedicoService;
   private toast: ToastrService;
+  private dialog: MatDialog;
 
-  constructor(service: MedicoService, toast: ToastrService) { 
+  constructor(service: MedicoService, toast: ToastrService, dialog: MatDialog) { 
     this.service = service;
     this.toast = toast;
+    this.dialog = dialog;
   }
 
   ngOnInit(): void {
@@ -81,6 +87,9 @@ export class MedicosComponent implements OnInit, AfterViewInit {
       }
     })
   }
-
+  openDialog(medico: Medico): void {    
+    this.dialog.open(MedicoDetailsComponent, {data: medico});
+    
+  }
 }
 

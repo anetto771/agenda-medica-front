@@ -11,13 +11,15 @@ import { NgxMaskModule } from 'ngx-mask';
 import { MatTableModule } from '@angular/material/table';
 import { PacienteUpdateComponent } from './childrens/paciente-update/paciente-update.component';
 import { PacientesRoutingModule } from './pacientes-routing.module';
+import { PacienteDetailsComponent } from './paciente-details/paciente-details.component';
 
 
 @NgModule({
   declarations: [
     PacientesComponent,
     PacienteCreateComponent,
-    PacienteUpdateComponent
+    PacienteUpdateComponent,
+    PacienteDetailsComponent
     
   ],
   imports: [
@@ -32,7 +34,8 @@ import { PacientesRoutingModule } from './pacientes-routing.module';
   exports: [
     PacientesComponent,
     PacienteCreateComponent,
-    PacienteUpdateComponent
+    PacienteUpdateComponent,
+    PacienteDetailsComponent
     
   ]
 })

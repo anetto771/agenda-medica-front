@@ -17,11 +17,6 @@
                 <input type="password" name="senha" matInput  required email maxlength="50" [(ngModel)]="usuario.senha" disabled>
             </mat-form-field>
 
-            <section class="section">
-                <mat-checkbox color="primary" class="margin" (change)="addPerfil(0)" [checked]="perfisChecked[0]">Administrador</mat-checkbox>
-                <mat-checkbox color="primary" class="margin" (change)="addPerfil(1)" [checked]="perfisChecked[1]">Usuario</mat-checkbox>
-                <mat-checkbox color="primary" class="margin" (change)="addPerfil(2)" [checked]="perfisChecked[2]">Medico</mat-checkbox>            
-            </section>
             <div class="align-right">
                 <button type="submit" mat-raised-button color="primary">Editar</button>
                 <a type="button" mat-raised-button color="warn" routerLink="/usuarios">Cancelar</a>

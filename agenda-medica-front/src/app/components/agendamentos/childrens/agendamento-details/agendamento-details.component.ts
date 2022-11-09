@@ -9,7 +9,7 @@ import { Agendamento } from 'src/app/models/agendamento';
 })
 export class AgendamentoDetailsComponent implements OnInit {
 
-  public agendamento!: Agendamento;
+  public agendamento: Agendamento;
   
   constructor(@Inject(MAT_DIALOG_DATA) agendamento: Agendamento) { 
     this.agendamento = agendamento;

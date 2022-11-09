@@ -24,6 +24,7 @@ export class UsuarioCreateComponent implements OnInit {
   private toast: ToastrService;
   private service: UsuarioService;
   private router: Router;
+  
 
   constructor(service: UsuarioService,toast: ToastrService, router: Router) { 
     this.service = service;
@@ -33,7 +34,7 @@ export class UsuarioCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
+}
 
   addPerfil(perfil: number): void {
     for(let i = 0; i < this.perfis.length; i++) {

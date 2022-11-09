@@ -12,52 +12,20 @@
             <input matInput (keyup)="applyFilterName($event)" #input>
         </mat-form-field>
 
-        <mat-form-field appearance="standard" class="full-width">
-            <mat-label>CPF</mat-label>
-            <input matInput (keyup)="applyFilterCpf($event)" #input>
-        </mat-form-field>
+w
         <div class="mat-elevation-z8">
             
             <table mat-table [dataSource]="dataSource">
 
-                <!-- Position Column -->
-                <ng-container matColumnDef="id">
-                    <th mat-header-cell *matHeaderCellDef> Id </th>
-                    <td mat-cell *matCellDef="let medico"> {{medico.id}} </td>
-                </ng-container>
-
-                <!-- Name Column -->
                 <ng-container matColumnDef="nome">
-                    <th mat-header-cell *matHeaderCellDef> Nome </th>
-                    <td mat-cell *matCellDef="let medico"> {{medico.nome}} </td>
+                    <th mat-header-cell *matHeaderCellDef>Nome</th>
+                    <td mat-cell *matCellDef="let medico"> 
+                        <button mat-icon-button (click)="openDialog(medico)">
+                            {{medico.nome}}
+                        </button>
+                    </td>
                 </ng-container>
-
-                <!-- Weight Column -->
-                <ng-container matColumnDef="email">
-                    <th mat-header-cell *matHeaderCellDef> E-mail </th>
-                    <td mat-cell *matCellDef="let medico"> {{medico.email}} </td>
-                </ng-container>
-
-                <!-- Symbol Column -->
-                <ng-container matColumnDef="cpf">
-                    <th mat-header-cell *matHeaderCellDef> CPF </th>
-                    <td mat-cell *matCellDef="let medico"> {{medico.cpf}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="especialidade">
-                    <th mat-header-cell *matHeaderCellDef> Especialidade </th>
-                    <td mat-cell *matCellDef="let medico"> {{medico.especialidade}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="telefone">
-                    <th mat-header-cell *matHeaderCellDef> Telefone </th>
-                    <td mat-cell *matCellDef="let medico"> {{medico.telefone}}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="dataCriacao">
-                    <th mat-header-cell *matHeaderCellDef> Data de Criação </th>
-                    <td mat-cell *matCellDef="let medico"> {{medico.dataCriacao}} </td>
-                </ng-container>
+            
 
                 <ng-container matColumnDef="update">
                     <th mat-header-cell *matHeaderCellDef> Alterar </th>

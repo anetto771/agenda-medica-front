@@ -23,7 +23,6 @@ export class MedicoUpdateComponent implements OnInit {
   }
 
   private perfis: number[] = [];
-  public perfisChecked: boolean[] = [false, false, false];
   private toast: ToastrService;
   private service: MedicoService;
   private router: Router;
@@ -67,13 +66,11 @@ export class MedicoUpdateComponent implements OnInit {
     for(let i = 0; i < this.perfis.length; i++) {
       if(this.perfis[i] === perfil) {
         this.perfis.splice(i, 1);
-        this.perfisChecked[perfil] = false;
         this.medico.perfis = this.perfis;
         return;
       }
     }
     this.perfis.push(perfil);
-    this.perfisChecked[perfil] = true;
     this.medico.perfis = this.perfis;
   }
 

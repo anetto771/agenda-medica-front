@@ -22,7 +22,6 @@ export class UsuarioUpdateComponent implements OnInit {
   }
 
   private perfis: number[] = [];
-  public perfisChecked: boolean[] = [false, false, false];
 
   private toast: ToastrService;
   private service: UsuarioService;
@@ -42,38 +41,21 @@ export class UsuarioUpdateComponent implements OnInit {
     if(id != null) {
       this.service.findById(Number.parseInt(id)).subscribe(usuario =>{
         this.usuario = usuario;
-        this.initializaPerfis(<string[]>this.usuario.perfis);
       });
     }
   }
 
-  initializaPerfis(perfis: string[]): void {
-    for(let perfil of perfis) {
-      switch(perfil) {
-        case "ADMIN":
-          this.addPerfil(0);
-          break;
-        case "PACIENTE":
-          this.addPerfil(1);
-          break;
-        case "MEDICO":
-          this.addPerfil(2);
-          break;
-      }
-    }
-  }
+
 
   addPerfil(perfil: number): void {
     for(let i = 0; i < this.perfis.length; i++) {
       if(this.perfis[i] === perfil) {
         this.perfis.splice(i, 1);
-        this.perfisChecked[perfil] = false;
         this.usuario.perfis = this.perfis;
         return;
       }
     }
     this.perfis.push(perfil);
-    this.perfisChecked[perfil] = true;
     this.usuario.perfis = this.perfis;
   }
 
