@@ -24,36 +24,22 @@
         </section>
 
         <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource">
-                <ng-container matColumnDef="id">
-                    <th mat-header-cell *matHeaderCellDef> Id </th>
-                    <td mat-cell *matCellDef="let agendamento"> {{agendamento.id}} </td>
-                </ng-container>
+            <table mat-table [dataSource]="dataSource" >
 
                 <ng-container matColumnDef="titulo">
                     <th mat-header-cell *matHeaderCellDef> Titulo </th>
                     <td mat-cell *matCellDef="let agendamento"> {{agendamento.titulo}} </td>
                 </ng-container>
 
-                <ng-container matColumnDef="paciente">
-                    <th mat-header-cell *matHeaderCellDef> Paciente </th>
-                    <td mat-cell *matCellDef="let agendamento"> {{agendamento.paciente}} </td>
+
+                <ng-container matColumnDef="horaAbertura">
+                    <th mat-header-cell *matHeaderCellDef>Data de Abertura </th>
+                    <td mat-cell *matCellDef="let agendamento"> {{agendamento.horaAbertura}} </td>
                 </ng-container>
 
-                <ng-container matColumnDef="medico">
-                    <th mat-header-cell *matHeaderCellDef> Médico </th>
-                    <td mat-cell *matCellDef="let agendamento"> {{agendamento.medico}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="dataAbertura">
-                    <th mat-header-cell *matHeaderCellDef> Data de Abertura </th>
-                    <td mat-cell *matCellDef="let agendamento"> {{agendamento.dataAbertura}} </td>
-                </ng-container>
-
-
-                <ng-container matColumnDef="status">
-                    <th mat-header-cell *matHeaderCellDef> Status </th>
-                    <td mat-cell *matCellDef="let agendamento"> {{agendamento.status | status}} </td>
+                <ng-container matColumnDef="horaFechamento">
+                    <th mat-header-cell *matHeaderCellDef> Data de Fechamento</th>
+                    <td mat-cell *matCellDef="let agendamento"> {{agendamento.horaFechamento}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="nomePaciente">

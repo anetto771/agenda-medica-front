@@ -20,8 +20,8 @@ export class AgendamentosComponent implements OnInit {
 
   public agendamentoList: Agendamento[] = [];
 
-  displayedColumns: string[] = ['id', 'titulo', 'nomePaciente', 'nomeMedico','dataAbertura', 'status', 
-    'observacoes', 'update', 'details'];
+  displayedColumns: string[] = ['titulo','nomePaciente', 'nomeMedico', 
+    'observacoes','horaAbertura','horaFechamento', 'update', 'details'];
     
   dataSource = new MatTableDataSource<Agendamento>(this.agendamentoList);
 
