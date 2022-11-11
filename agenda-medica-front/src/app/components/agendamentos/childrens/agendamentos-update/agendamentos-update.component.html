@@ -33,6 +33,16 @@
                 </mat-select>
             </mat-form-field>
 
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Data de Abertura</mat-label>
+                <input type="datetime-local" formControlName="horaAbertura" matInput>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Data de Fechamento</mat-label>
+                <input type="datetime-local" formControlName="horaFechamento" matInput>
+            </mat-form-field>
+
             <mat-form-field class="full-width" appearance="fill">
                 <mat-label>Observações</mat-label>
                 <textarea matInput class="observacoes" name="observacoes" [(ngModel)]="agendamento.observacoes"></textarea>

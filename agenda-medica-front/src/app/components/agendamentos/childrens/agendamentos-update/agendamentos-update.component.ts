@@ -9,6 +9,7 @@ import { AgendamentoService } from 'src/app/services/agendamento.service';
 import { MedicoService } from 'src/app/services/medico.service';
 import { PacienteService } from 'src/app/services/paciente.service';
 
+
 type DataSection = {
   title: string,
   value: number
@@ -30,6 +31,8 @@ export class AgendamentosUpdateComponent implements OnInit {
   public agendamento: Agendamento = {
     status: NaN,
     titulo: '',
+    horaAbertura: new Date(),
+    horaFechamento: new Date(),
     observacoes: '',
     medico: NaN,
     paciente: NaN,
@@ -42,6 +45,7 @@ export class AgendamentosUpdateComponent implements OnInit {
 
 
 
+  
   private servicePaciente: PacienteService;
   private serviceMedico: MedicoService;
   private toast: ToastrService;
@@ -53,6 +57,7 @@ export class AgendamentosUpdateComponent implements OnInit {
     serviceMedico: MedicoService, toast: ToastrService, router: Router, route: ActivatedRoute) {
 
     this.service = service;
+
     this.servicePaciente = servicePaciente;
     this.serviceMedico = serviceMedico;
     this.toast = toast;
@@ -61,6 +66,7 @@ export class AgendamentosUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  
     this.initializeCliente();
     this.initializeMedico();
     this.initializeFields();

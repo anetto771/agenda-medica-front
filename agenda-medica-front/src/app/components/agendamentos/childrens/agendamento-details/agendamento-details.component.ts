@@ -13,7 +13,7 @@ export class AgendamentoDetailsComponent implements OnInit {
   
   constructor(@Inject(MAT_DIALOG_DATA) agendamento: Agendamento) { 
     this.agendamento = agendamento;
-    console.log(agendamento.dataFechamento);
+    
   }
 
   ngOnInit(): void {

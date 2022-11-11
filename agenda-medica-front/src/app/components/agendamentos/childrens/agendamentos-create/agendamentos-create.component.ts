@@ -38,8 +38,9 @@ export class AgendamentosCreateComponent implements OnInit {
   private service: AgendamentoService;
   private router: Router;
 
+
   constructor(service: AgendamentoService, servicePaciente: PacienteService, 
-    serviceMedico: MedicoService, formBuilder: FormBuilder, toast: ToastrService, router: Router) {
+    serviceMedico: MedicoService, formBuilder: FormBuilder, toast: ToastrService, router: Router, ) {
     
     this.service = service;
     this.servicePaciente = servicePaciente;
@@ -48,6 +49,8 @@ export class AgendamentosCreateComponent implements OnInit {
     this.router = router;
     this.formAgendamento = formBuilder.group({
       titulo: ["", [Validators.required]],
+      horaAbertura:["",[Validators.required]],
+      horaFechamento:["",[Validators.required]],
       status: ["", [Validators.required]],
       paciente: ["", [Validators.required]],
       medico: ["", [Validators.required]],
@@ -94,4 +97,4 @@ export class AgendamentosCreateComponent implements OnInit {
       this.toast.error("Dados inválidos.", "Erro");
     }
   }
-}
+};

@@ -12,9 +12,11 @@ import { UtilsModule } from './utils/utils.module';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
   ],
   imports: [
     BrowserModule,
