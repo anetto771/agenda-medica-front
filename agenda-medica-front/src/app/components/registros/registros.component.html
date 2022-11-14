@@ -1,0 +1,33 @@
+<nav-bar>
+    <ng-container>
+        <div class="container-title">
+            <h2>Históricos</h2>
+        </div>
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource">
+                <ng-container matColumnDef="horaAbertura">
+                    <th mat-header-cell *matHeaderCellDef>Data de Abertura </th>
+                    <td mat-cell *matCellDef="let registro"> {{registro.horaAbertura}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="nomePaciente">
+                    <th mat-header-cell *matHeaderCellDef> Nome do Paciente </th>
+                    <td mat-cell *matCellDef="let registro"> {{registro.nomePaciente}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="nomeMedico">
+                    <th mat-header-cell *matHeaderCellDef> Nome do Médico </th>
+                    <td mat-cell *matCellDef="let registro"> {{registro.nomeMedico}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                aria-label="Select page of periodic registros">
+            </mat-paginator>
+        </div>
+
+    </ng-container>
+</nav-bar>

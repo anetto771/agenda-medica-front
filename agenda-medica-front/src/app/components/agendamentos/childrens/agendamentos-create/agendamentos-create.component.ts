@@ -5,9 +5,11 @@ import { ToastrService } from 'ngx-toastr';
 import { Agendamento } from 'src/app/models/agendamento';
 import { Medico } from 'src/app/models/medico';
 import { Paciente } from 'src/app/models/paciente';
+import { Usuario } from 'src/app/models/usuario';
 import { AgendamentoService } from 'src/app/services/agendamento.service';
 import { MedicoService } from 'src/app/services/medico.service';
 import { PacienteService } from 'src/app/services/paciente.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 type DataSection = {
   title: string,
@@ -27,10 +29,12 @@ export class AgendamentosCreateComponent implements OnInit {
     { title: "Encerrado", value: 2 }
   ]
 
+
   public pacienteList: Paciente[] = [];
   public medicoList: Medico[] = [];
 
   public formAgendamento: FormGroup;
+
 
   private servicePaciente: PacienteService;
   private serviceMedico: MedicoService;
@@ -39,10 +43,11 @@ export class AgendamentosCreateComponent implements OnInit {
   private router: Router;
 
 
-  constructor(service: AgendamentoService, servicePaciente: PacienteService, 
+  constructor(service: AgendamentoService, servicePaciente: PacienteService,
     serviceMedico: MedicoService, formBuilder: FormBuilder, toast: ToastrService, router: Router, ) {
-    
+
     this.service = service;
+    
     this.servicePaciente = servicePaciente;
     this.serviceMedico = serviceMedico;
     this.toast = toast;
@@ -52,6 +57,7 @@ export class AgendamentosCreateComponent implements OnInit {
       horaAbertura:["",[Validators.required]],
       horaFechamento:["",[Validators.required]],
       status: ["", [Validators.required]],
+      usuario: ["", [Validators.required]],
       paciente: ["", [Validators.required]],
       medico: ["", [Validators.required]],
       observacoes: ["", [Validators.required, Validators.minLength(6)]]
@@ -59,10 +65,10 @@ export class AgendamentosCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initializeCliente();
+    this.initializePaciente();
     this.initializeMedico();
   }
-  initializeCliente(): void {
+  initializePaciente(): void {
     this.servicePaciente.findAll().subscribe(paciente => {
       this.pacienteList = paciente;
     });
@@ -96,5 +102,7 @@ export class AgendamentosCreateComponent implements OnInit {
     } else {
       this.toast.error("Dados inválidos.", "Erro");
     }
+    
   }
+
 };

@@ -43,6 +43,11 @@ const routes: Routes = [
     loadChildren: () => import("./components/usuarios/usuarios.module").then(m => m.UsuariosModule),
     canActivate:[AuthGuard]
   },
+  { 
+    path: 'registros', 
+    loadChildren: () => import("./components/registros/registros.module").then(m => m.RegistrosModule),
+    canActivate:[AuthGuard]
+  },
 {
   path: "exit",
   component: ExitComponent,

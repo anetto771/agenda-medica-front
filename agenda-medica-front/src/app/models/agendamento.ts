@@ -1,7 +1,5 @@
 export interface Agendamento {
     id?: number;
-    //dataAbertura?: string;
-    //dataFechamento?: string;
     horaAbertura: Date;
     horaFechamento:  Date;
     status: number;
