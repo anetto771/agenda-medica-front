@@ -21,7 +21,7 @@ export class RegistrosComponent implements OnInit {
   public registroList: Registro[] = [];
   
 
-  displayedColumns: string[] = ['titulo','nomePaciente', 'nomeMedico','horaAbertura'];
+  displayedColumns: string[] = ['id','nomePaciente', 'nomeMedico','horaAbertura'];
     
   dataSource = new MatTableDataSource<Registro>(this.registroList);
 
